@@ -8,7 +8,7 @@ const { Schema } = mongoose;
     name:  String, // String is shorthand for {type: String}
     age: Number,
     body:   String,
-    favoriteFoods: []
+    favoriteFoods: Array
   });
 
 //create Person model
@@ -18,7 +18,7 @@ const Person = mongoose.model('Person', personSchema);
 
 const createAndSavePerson = (done) => {
   const bill = new Person({ name: 'Bill',  age: 27, favoriteFoods: ['sausage','cucumber']});
-  bill.save(function (err, bill) {
+  bill.save(function (err, data) {
     if (err) return console.error(err);
   });
   done(null /*, data*/);
