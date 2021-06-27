@@ -4,12 +4,12 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 
 //create personSchema
 const { Schema } = mongoose;
-  const personSchema = new Schema({
-    name:  String, // String is shorthand for {type: String}
-    age: Number,
-    body:   String,
-    favoriteFoods: Array
-  });
+const personSchema = new Schema({
+  name: String, // String is shorthand for {type: String}
+  age: Number,
+  body: String,
+  favoriteFoods: Array
+});
 
 //create Person model
 const Person = mongoose.model('Person', personSchema);
@@ -17,11 +17,16 @@ const Person = mongoose.model('Person', personSchema);
 // let Person;
 
 const createAndSavePerson = (done) => {
-  const bill = new Person({ name: 'Bill',  age: 27, favoriteFoods: ['sausage','cucumber']});
+  const bill = new Person({ name: 'Bill', age: 27, favoriteFoods: ['sausage', 'cucumber'] });
+
   bill.save(function (err, data) {
-    if (err) return console.error(err);
+    if (err) {
+      console.error(err);
+    } else {
+      done(null, data)
+    }
   });
-  done(null /*, data*/);
+  // done(null /*, data*/);
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
