@@ -40,7 +40,7 @@ const createManyPeople = (arrayOfPeople, done) => {
 });
  
 };
-
+const personName = 'Bill';
 const findPeopleByName = (personName, done) => {
   Person.find({name: personName, function (err, data) {
     if (err) {
