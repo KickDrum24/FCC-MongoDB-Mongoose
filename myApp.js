@@ -28,9 +28,9 @@ const createAndSavePerson = (done) => {
   });
   // done(null /*, data*/);
 };
-
+const arrayOfPeople = [{name: 'Jimmy'}, {name: 'Jenny', age: 33, favoriteFoods: ['hot dog']}]
 const createManyPeople = (arrayOfPeople, done) => {
- Person.create({name: 'Jimmy'}, {name: 'Jenny', age: 33, favoriteFoods: ['hot dog']})
+ Person.create(arrayOfPeople)
   done(null, data);
 };
 
