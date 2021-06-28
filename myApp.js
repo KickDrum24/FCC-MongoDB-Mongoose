@@ -87,8 +87,6 @@ const findEditThenSave = (personId, done) => {
       })
     }
   })
-
-  
 };
 
 const findAndUpdate = (personName, done) => {
@@ -100,12 +98,13 @@ const findAndUpdate = (personName, done) => {
       done(null, data)
     }
   })
-  // done(null /*, data*/);
 };
 
 const removeById = (personId, done) => {
-  done(null /*, data*/);
-};
+  Person.findByIdAndRemove(personId,  (err,data)=> {err ?
+    console.error(err) : done(null, data)  
+  })
+}
 
 const removeManyPeople = (done) => {
   const nameToRemove = "Mary";
